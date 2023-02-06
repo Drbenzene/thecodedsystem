@@ -10,10 +10,8 @@ import generateToken from '../utils/generateToken.js'
 
 const createUser = async (req, res) => {
   const { businessName, email, password } = req.body
-
   //Check if the User Already Exists
   const userExist = await User.findOne({ email: email })
-  console.log('userexist', userExist)
   if (userExist) {
     throw new Error(
       'Account already exist. Please login to continue Usinf Recallo ',
@@ -54,11 +52,6 @@ const createUser = async (req, res) => {
  */
 const loginUser = async (req, res) => {
   const { email, password } = req.body
-
-  // if (!email || !password) {
-  //   res.status(401)
-  //   throw new Error('Please provide email and password to login. ')
-  // }
 
   //Check if the account already exists
   try {
